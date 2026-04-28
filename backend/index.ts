@@ -10,7 +10,23 @@ const app = express()
 
 app.use(express.json());
 
-app.get("/chat", async (req, res) => {
+app.post("/signup", async (req, res) => {
+
+})
+
+app.post("/signin", async (req, res) => {
+
+})
+
+app.get("/conversations", async (req, res) => {
+
+})
+
+app.get("/conversation/:conversationId", async (req, res) => {
+
+})
+
+app.post("/chat", async (req, res) => {
     // query from the user
     const query = req.body.query;
 
@@ -59,6 +75,16 @@ app.get("/chat", async (req, res) => {
 
     // close the event stream
     res.end()
+})
+
+app.post("/chat/follow_up", async (req, res) => {
+    // get the existing chat form db,
+
+    // forward the full history to LLM 
+
+    // TODO do the context enginerring here
+    
+    // stream the response to the user
 })
 
 app.listen(3000);
