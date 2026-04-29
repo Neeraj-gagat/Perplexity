@@ -1,7 +1,7 @@
 import express from "express";
 import { tavily } from "@tavily/core"
-import z, { url } from "zod"
-import { Output, streamText } from 'ai'
+// import z, { url } from "zod"
+import { streamText } from 'ai'
 import { PROMPT_TEMPLATE, SYSTEM_PROMPT } from "./prompt";
 
 const client = tavily({apiKey: process.env.TAVILY_API_KEY}) 
@@ -10,13 +10,13 @@ const app = express()
 
 app.use(express.json());
 
-app.post("/signup", async (req, res) => {
+// app.post("/signup", async (req, res) => {
 
-})
+// })
 
-app.post("/signin", async (req, res) => {
+// app.post("/signin", async (req, res) => {
 
-})
+// })
 
 app.get("/conversations", async (req, res) => {
 

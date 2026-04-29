@@ -18,6 +18,7 @@ model User {
   id                String     @id   @default(uuid())
   email             String      
   name              String
+  supabaseId        String
   provider          AuthProvider
   conversations     Conversation[]
 }
