@@ -1,8 +1,9 @@
 import { createBrowserClient } from '@supabase/ssr'
 
 export function createClient() {
+  // alert(process.env.BUN_PUBLIC_SUPABASE_URL!)
   return createBrowserClient(
-    import.meta.env.VITE_SUPABASE_URL!,
-    import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY!
+    process.env.BUN_PUBLIC_SUPABASE_URL!,
+    process.env.BUN_PUBLIC_SUPABASE_PUBLISHABLE_KEY!
   )
 }
