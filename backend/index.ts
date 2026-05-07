@@ -1,3 +1,4 @@
+import cors from "cors"
 import express from "express";
 import { tavily } from "@tavily/core"
 // import z, { url } from "zod"
@@ -10,6 +11,7 @@ const client = tavily({apiKey: process.env.TAVILY_API_KEY})
 const app = express()
 
 app.use(express.json());
+app.use(cors())
 
 // app.post("/signup", async (req, res) => {
 
@@ -20,7 +22,9 @@ app.use(express.json());
 // })
 
 app.get("/conversations", middleware,async (req, res) => {
-
+    res.json({
+        userId: req.userId
+    })
 })
 
 app.get("/conversation/:conversationId", middleware, async (req, res) => {
@@ -88,4 +92,4 @@ app.post("/chat/follow_up", middleware ,async (req, res) => {
     // stream the response to the user
 })
 
-app.listen(3000);
+app.listen(3001);
