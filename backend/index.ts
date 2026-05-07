@@ -3,6 +3,7 @@ import { tavily } from "@tavily/core"
 // import z, { url } from "zod"
 import { streamText } from 'ai'
 import { PROMPT_TEMPLATE, SYSTEM_PROMPT } from "./prompt";
+import { middleware } from "./middleware";
 
 const client = tavily({apiKey: process.env.TAVILY_API_KEY}) 
 
@@ -18,15 +19,15 @@ app.use(express.json());
 
 // })
 
-app.get("/conversations", async (req, res) => {
+app.get("/conversations", middleware,async (req, res) => {
 
 })
 
-app.get("/conversation/:conversationId", async (req, res) => {
+app.get("/conversation/:conversationId", middleware, async (req, res) => {
 
 })
 
-app.post("/chat", async (req, res) => {
+app.post("/chat", middleware,async (req, res) => {
     // query from the user
     const query = req.body.query;
 
@@ -77,7 +78,7 @@ app.post("/chat", async (req, res) => {
     res.end()
 })
 
-app.post("/chat/follow_up", async (req, res) => {
+app.post("/chat/follow_up", middleware ,async (req, res) => {
     // get the existing chat form db,
 
     // forward the full history to LLM 
